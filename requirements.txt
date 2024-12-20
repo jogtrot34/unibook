@@ -19,15 +19,6 @@ crispy-bootstrap5==2024.10
 Django==5.1.1
 django-crispy-forms==2.3
 docutils==0.21.2
-Eel==0.17.0
-fastapi==0.115.3
-flash==1.0.3
-Flask==3.0.3
-Flask-SQLAlchemy==3.1.1
-flet==0.25.1
-flet-cli==0.25.1
-flet-desktop==0.25.1
-flet-web==0.25.1
 future==1.0.0
 gevent==24.10.2
 gevent-websocket==0.10.1
@@ -51,8 +42,6 @@ pycparser==2.22
 pydantic==2.9.2
 pydantic_core==2.23.4
 Pygments==2.18.0
-pyinstaller==6.11.1
-pyinstaller-hooks-contrib==2024.10
 pyparsing==3.2.0
 pypiwin32==223
 pypng==0.20220715.0
