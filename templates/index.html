@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniBooks - Empowering Education</title>
+    <link rel="stylesheet" href="{% static 'styles.css'%}">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">UniBooks Malawi</div>
+        <nav class="nav">
+            <a href="#about">About</a>
+            <a href="#mission">Mission</a>
+            <a href="#catalog">Catalog</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Welcome to UniBooks Malawi</h1>
+            <p>Empowering students with access to free, quality learning materials.</p>
+            <a href="{% url 'books'%}" class="btn">Explore Resources</a>
+        </section>
+
+        <section id="about" class="about">
+            <h2>About UniBooks</h2>
+            <p>UniBooks is dedicated to supporting Malawian students by providing a wide range of academic materials, tailored for university and school learners. Our platform is designed to ensure that every student has access to the resources they need to succeed.</p>
+        </section>
+
+        <section id="mission" class="mission">
+            <h2>Our Mission</h2>
+            <p>We believe education is the key to a brighter future. Our mission is to bridge the gap in resource accessibility by offering free and downloadable academic materials to students in Malawi and beyond. Whether you're preparing for exams or exploring new knowledge, UniBooks is here for you.</p>
+        </section>
+
+        <section id="features" class="features">
+            <h2>Why Choose UniBooks?</h2>
+            <div class="features-container">
+                <div class="feature">
+                    <h3>Extensive Library</h3>
+                    <p>Access a wide variety of subjects and books for different academic levels.</p>
+                </div>
+                <div class="feature">
+                    <h3>Free Downloads</h3>
+                    <p>All resources are downloadable for offline use, anytime, anywhere.</p>
+                </div>
+                <div class="feature">
+                    <h3>For Students</h3>
+                    <p>Our platform is built with students in mind, focusing on user-friendly access.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Contact Us</h2>
+            <p>Have questions, suggestions or looking for a particular book? <br>
+                Joseph Wella(Web dev): 0998104950,<br> Bruce Ndovie(Content manager): 0997842154,<br> Redson Kadyanji(Content Moderator): 0883378163</p>
+        </section>
+
+        <section id="contact-2" class="contact">
+            <img src="{% static 'Mzuni.jpg'%}" height="150px"  style="border: 5px solid green; border-radius: 20px;">
+            <h2>Built by</h2>
+            <p>Bsc Physics and electronics Students<br>
+                Mzuzu University</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 UniBooks. Empowering Education for Every Student.</p>
+    </footer>
+</body>
+</html>

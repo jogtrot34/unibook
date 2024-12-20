@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniBooks - Book List</title>
+    <style>
+    /* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+        background:  url({% static 'background.jpg'%}) no-repeat center center fixed;
+        font-family: 'Arial', sans-serif;
+        background-color: #f08811a8;
+        background-size: cover;
+        background-blend-mode: overlay;
+        color: #0012b6;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Header Styling */
+    header {
+        background-color: #254ccabe;
+        color: #FFFFFF;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+    }
+
+    header p {
+        font-size: 1.2rem;
+        margin-top: 5px;
+        font-style: italic;
+        letter-spacing: 0.5px;
+    }
+
+    /* Layout Container */
+    .container {
+        display: flex;
+        flex: 1;
+        min-height: 100vh;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+        background-color: #ffffff;
+        width: 250px;
+        padding: 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar h3 {
+        margin-bottom: 20px;
+        color: #110eca;
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .sidebar ul li {
+        margin: 10px 0;
+    }
+
+    .sidebar ul li a {
+        text-decoration: none;
+        color: #1b43c4;
+        font-size: 1rem;
+        padding: 10px;
+        font-weight: bold;
+        border-left: 2px solid #1b43c4;
+        transition: ease 1s;
+        margin-bottom:8px;
+    }
+
+    .sidebar ul li a:hover {
+        color: #ffffff;
+        border-left: 2px solid #ffffff;
+        border-bottom: 2px solid  #ffffff;
+        border-bottom-left-radius: 5px;
+        background-color: #1b43c4;
+
+    }
+
+    /* Main Content */
+    .main-content {
+        margin-left: 270px;
+        padding: 20px;
+        flex: 1;
+    }
+
+    /* Book List Styling */
+    .book-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 1.5rem;
+    }
+
+    .book {
+        background: linear-gradient(to top right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        padding: 20px;
+        width: 250px;
+        min-height: 300px;
+    }
+
+    .book img {
+        max-width: 100%;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    .book h2 {
+        font-size: 1.4rem;
+        color: #0a24b8;
+        margin: 15px 0;
+    }
+
+    .book p {
+        font-size: 1rem;
+        color: #555;
+        margin: 10px 0;
+    }
+
+    .button {
+        display: inline-block;
+        background-color: #2433b4;
+        color: #FFFFFF;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .button:hover {
+        color: #dfff2c;
+        border-bottom: 2px solid #dfff2c;
+    }
+
+    /* Footer Styling */
+    footer {
+        background-color: #130fdd;
+        color: #FFFFFF;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>UniBooks - Explore Our Collection</h1>
+    <p>Your ultimate resource for university books and learning materials</p>
+</header>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h3>University Courses of Study</h3>
+        <ul>
+            {% for course in courses %}
+            <li><a href="{% url 'courses' course.id %}">{{course.name}}</a></li>
+            {%endfor%}
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        {% if books %}
+        <div class="book-list">
+            {% for book in books %}
+            <div class="book">
+                <img src="{{book.cover.url}}" alt="{{book.name}}" height="200px">
+                <h2>{{book.name}}</h2>
+                <p>Author: {{book.author}}</p>
+                <a href="{{book.file.url}}" class="button">Open</a>
+            </div>
+            {%endfor%}
+        </div>
+        {% else %}
+        <div class="book-list">
+            <div class="book">
+                <img src="{% static 'kakashi.jpg'%}" alt="{{book.name}}" width="500px">
+                <h2>We are so sorry about this</h2>
+                <p>The books you are looking for are not available at the time.
+                Please request them by contacting us and we will have our Anbu Balck Ops look into it!</p>
+                <a href="{% url 'home'%}" class="button">Go back</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 UniBooks</p>
+</footer>
+
+</body>
+</html>
